@@ -68,8 +68,8 @@ gulp.task('concatUsageCSS', ['usageBootstrap'], function(){
 			.pipe(gulp.dest('./app/css/'));
 });
 
-gulp.task('compileSass', function(){
-	return gulp.src('./app/sass/style.scss')
+gulp.task('compileScss', function(){
+	return gulp.src('./app/scss/style.scss')
 			.pipe(sass().on('error', sass.logError))
 			.pipe(concat('style.css'))
 			// .pipe(autoprefixer('last 2 versions'))
@@ -98,5 +98,6 @@ gulp.task('compileTS', function(){
 gulp.task('watch', function(){
 	gulp.watch(['./app/**/*.html', './app/js/*.js'], ['connectReload']);
 	gulp.watch('./app/angularApp/**/*.ts', ['compileTS']);
+	gulp.watch('./app/scss/style.scss', ['compileScss']);
 });
 gulp.task('default', ['connect', 'watch']);
